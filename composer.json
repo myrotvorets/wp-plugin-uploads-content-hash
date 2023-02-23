@@ -33,7 +33,8 @@
 		},
 		"allow-plugins": {
 			"composer/package-versions-deprecated": true,
-			"composer/installers": true
+			"composer/installers": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true
 		}
 	},
 	"scripts": {
