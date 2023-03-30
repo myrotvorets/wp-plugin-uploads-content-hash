@@ -4,6 +4,7 @@ use Myrotvorets\WordPress\UploadsContentHash\Plugin;
 
 /**
  * @psalm-import UploadedFile from Plugin
+ * @psalm-import PostData from Plugin
  */
 class Test_Plugin extends WP_UnitTestCase {
 	/**
@@ -54,6 +55,67 @@ class Test_Plugin extends WP_UnitTestCase {
 					'tmp_name' => __DIR__ . '/fixtures/does-not-exist.txt',
 					'size'     => 0,
 					'error'    => 0,
+				],
+			],
+		];
+	}
+
+	/**
+	 * @covers Myrotvorets\WordPress\UploadsContentHash\Plugin::wp_insert_attachment_data
+	 * @dataProvider data_wp_insert_attachment_data
+	 * @psalm-param PostData $input
+	 * @psalm-param Post $expected
+	 */
+	public function test_wp_insert_attachment_data( array $input, array $expected ): void {
+		$instance = Plugin::instance();
+
+		$actual = $instance->wp_insert_attachment_data( $input );
+		self::assertEquals( $expected, $actual );
+	}
+
+	/**
+	 * @psalm-return iterable<string, array{PostData, PostData}>
+	 */
+	public function data_wp_insert_attachment_data(): iterable {
+		return [
+			'name and title with hash'             => [
+				[
+					'post_name'  => 'test-abcdef',
+					'post_title' => 'test.abcdef',
+				],
+				[
+					'post_name'  => 'test',
+					'post_title' => 'test',
+				],
+			],
+			'name and title without hash'          => [
+				[
+					'post_name'  => 'test',
+					'post_title' => 'test',
+				],
+				[
+					'post_name'  => 'test',
+					'post_title' => 'test',
+				],
+			],
+			'name and title with mismatching hash' => [
+				[
+					'post_name'  => 'test-abcdef',
+					'post_title' => 'test.012345',
+				],
+				[
+					'post_name'  => 'test-abcdef',
+					'post_title' => 'test.012345',
+				],
+			],
+			'name and title with incorrect hash'   => [
+				[
+					'post_name'  => 'test-zabcdef',
+					'post_title' => 'test.zabcdef',
+				],
+				[
+					'post_name'  => 'test-zabcdef',
+					'post_title' => 'test.zabcdef',
 				],
 			],
 		];
