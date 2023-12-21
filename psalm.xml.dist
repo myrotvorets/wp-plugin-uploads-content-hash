@@ -2,7 +2,7 @@
 <psalm
     errorLevel="1"
     resolveFromConfigFile="true"
-    phpVersion="7.4"
+    phpVersion="8.1"
     findUnusedPsalmSuppress="true"
     findUnusedBaselineEntry="true"
     findUnusedCode="true"
@@ -24,5 +24,6 @@
     </issueHandlers>
     <stubs>
         <file name="vendor/php-stubs/wordpress-stubs/wordpress-stubs.php"/>
+        <file name="wordpress.stubs"/>
     </stubs>
 </psalm>
