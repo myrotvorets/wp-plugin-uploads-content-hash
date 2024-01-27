@@ -36,6 +36,7 @@ class Plugin {
 			$hash = md5_file( $file['tmp_name'] );
 			if ( false !== $hash ) {
 				$info = pathinfo( $file['name'] );
+				/** @psalm-suppress RiskyTruthyFalsyComparison */
 				$ext  = empty( $info['extension'] ) ? '' : '.' . $info['extension'];
 				$name = basename( $file['name'], $ext );
 
