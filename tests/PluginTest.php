@@ -17,7 +17,7 @@ class PluginTest extends WP_UnitTestCase {
 		$instance = Plugin::instance();
 
 		$actual = $instance->upload_prefilter( $input );
-		self::assertEquals( $expected, $actual );
+		static::assertEquals( $expected, $actual );
 	}
 
 	/**
@@ -70,7 +70,7 @@ class PluginTest extends WP_UnitTestCase {
 		$instance = Plugin::instance();
 
 		$actual = $instance->wp_insert_attachment_data( $input );
-		self::assertEquals( $expected, $actual );
+		static::assertEquals( $expected, $actual );
 	}
 
 	/**

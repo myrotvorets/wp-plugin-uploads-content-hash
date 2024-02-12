@@ -4,7 +4,8 @@
     colors="true"
     convertDeprecationsToExceptions="true"
     beStrictAboutCoversAnnotation="true"
-    forceCoversAnnotation="true">
+    forceCoversAnnotation="true"
+    cacheResult="false">
   <coverage processUncoveredFiles="true">
     <include>
       <directory suffix=".php">inc</directory>
