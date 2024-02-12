@@ -7,7 +7,7 @@
         {
             "customType": "regex",
             "fileMatch": [
-                "^.devcontainer/devcontainer\\.json$",
+                "^.devcontainer/([^/]+/)?devcontainer\\.json$",
                 "^.devcontainer\\.json$"
             ],
             "matchStrings": [
