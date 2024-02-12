@@ -6,7 +6,7 @@ use Myrotvorets\WordPress\UploadsContentHash\Plugin;
  * @psalm-import UploadedFile from Plugin
  * @psalm-import PostData from Plugin
  */
-class Test_Plugin extends WP_UnitTestCase {
+class PluginTest extends WP_UnitTestCase {
 	/**
 	 * @covers Myrotvorets\WordPress\UploadsContentHash\Plugin::upload_prefilter
 	 * @dataProvider data_upload_prefilter
