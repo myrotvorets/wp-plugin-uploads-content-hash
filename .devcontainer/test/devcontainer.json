@@ -1,4 +1,4 @@
 {
     "name": "Upload Hash (Test)",
-    "image": "ghcr.io/sjinks/codespaces/wordpress-test:latest"
+    "image": "ghcr.io/sjinks/codespaces/wordpress-test:latest@sha256:a341b80eae74d2e4bb4571ba6df97b43e4dd383da6e753402461f4c9c0ea546f"
 }
